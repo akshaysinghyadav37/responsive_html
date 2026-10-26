@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>शुभ विवाह निमंत्रण — यादव परिवार</title>
+<meta name="description" content="अक्षय ♥ लीना एवं आदित्य ♥ रेनू के शुभ विवाह का डिजिटल निमंत्रण">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="petals" aria-hidden="true"></div>
+<div class="tools">
+  <button id="petalBtn" type="button" aria-pressed="true">🌼 पंखुड़ियाँ बंद करें</button>
+  <button id="soundBtn" type="button" aria-pressed="false" hidden>🔔 शुभ ध्वनि चलाएँ</button>
+</div>
+
+<header id="welcome" class="welcome">
+  <p class="namah">॥ श्री गणेशाय नमः ॥</p>
+  <img src="ganesh.svg" alt="श्री गणेश जी" class="ganesh" width="150" height="160">
+  <h1 class="shubh">॥ शुभ विवाह ॥</h1>
+  <p class="msg">ईश्वर की असीम कृपा एवं बड़ों के आशीर्वाद से हमारे परिवार में दो शुभ विवाह के मंगल अवसर पर आपका हार्दिक स्वागत है।</p>
+  <p class="msg small">कृपया नीचे दिए गए विकल्पों पर क्लिक करके विवाह कार्यक्रम, वर-वधू का परिचय तथा परिवार के सदस्यों के बारे में जानें।</p>
+  <p class="couple">अक्षय ♥ लीना</p>
+  <p class="couple">आदित्य ♥ रेनू</p>
+  <p class="when"><strong>5 दिसंबर — सामूहिक आशीर्वाद समारोह</strong><br>सायं 7:00 बजे से<br>बाफना मंगलम, दुर्ग</p>
+  <button id="openBtn" class="btn primary" type="button">🌸 निमंत्रण खोलें 🌸</button>
+  <p id="counter" class="counter" aria-live="polite">आगंतुक संख्या लोड हो रही है…</p>
+</header>
+
+<main id="main" hidden>
+  <h2 class="menu-title">क्या देखना चाहेंगे?</h2>
+  <nav id="menu" class="menu" aria-label="मुख्य मेनू"></nav>
+  <div id="panels"></div>
+  <section class="aashirvad" aria-labelledby="ashTitle">
+    <h2 id="ashTitle">आशीर्वाद एवं शुभकामनाएँ</h2>
+    <div class="cols"><div><h3>आशीर्वादकर्ता</h3><ul id="ashList"></ul></div><div><h3>विनीत</h3><ul id="vinitList"></ul></div></div>
+  </section>
+  <p class="center"><button id="homeBtn" class="btn" type="button">🏠 मुख्य पृष्ठ</button></p>
+</main>
+
+<footer class="foot">सप्रेम — समस्त यादव परिवार, ग्राम — खेरूद</footer>
+<button id="topBtn" class="top" type="button" aria-label="ऊपर जाएँ" hidden>⬆ ऊपर जाएँ</button>
+<script src="script.js"></script>
+</body>
+</html>
