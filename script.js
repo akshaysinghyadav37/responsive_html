@@ -1,8 +1,8 @@
 "use strict";
 /* ===== सेटिंग (केवल यहीं बदलें) ===== */
 const CONFIG = {
-  goatCounterCode: "",   // GoatCounter खाते का कोड, जैसे "yadav-vivah" (README देखें)
-  year: null,            // विवाह का वर्ष, जैसे 2026 — तय होने पर ही भरें; खाली रहने पर कैलेंडर बंद रहेगा
+  goatCounterCode: "yadav-vivah",   // GoatCounter खाते का कोड, जैसे "yadav-vivah" (README देखें)
+  year: 2026,            // विवाह का वर्ष, जैसे 2026 — तय होने पर ही भरें; खाली रहने पर कैलेंडर बंद रहेगा
   mapsQuery: "बाफना मंगलम, दुर्ग",  // सही Google Maps लिंक मिलने पर mapsUrl भरें
   mapsUrl: "",
   audio: ""              // जैसे "shubh.mp3" — खाली रहने पर ध्वनि बटन छिपा रहेगा
