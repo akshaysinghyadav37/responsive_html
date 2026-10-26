@@ -25,7 +25,21 @@ const DATA = {
   /* परिवार: जानकारी मिलने पर items में {name, role} जोड़ें; शाखाओं के लिए children भी दे सकते हैं */
   family: [
     { title: "बड़े पापा एवं चाचा", items: [] },
-    { title: "बुआ परिवार", items: [] },
+    { title: "बुआ परिवार", items: [
+  { name: "श्रीमती सावित्री यादव", role: "बुआजी", spouse: { name: "श्री नरेंद्र यादव", role: "फूफाजी" }, children: [
+    { name: "देवचंद यादव", role: "सुपुत्र", spouse: { name: "वीणा यादव", role: "धर्मपत्नी" }, children: [
+      { name: "उज्ज्वल यादव", role: "सुपुत्री" },
+      { name: "चंचल यादव", role: "सुपुत्री" } ] },
+    { name: "राजेश यादव", role: "सुपुत्र" },
+    { name: "रेनू यादव", role: "सुपुत्री" } ] },
+  { name: "श्रीमती सुनीति यदु", role: "बुआजी", spouse: { name: "श्री जय प्रकाश यदु", role: "फूफाजी" }, children: [
+    { name: "भूपेश यदु", role: "सुपुत्र", spouse: { name: "सोनम यदु", role: "धर्मपत्नी" }, children: [
+      { name: "चिराग यदु", role: "सुपुत्र", media: { type: "photo", src: "media/chirag_yadu.jpg" } },
+      { name: "रूपाली यदु", role: "सुपुत्री", media: { type: "video", src: "media/rupali_yadu.mp4" } } ] },
+    { name: "पूजा यदु", role: "सुपुत्री", spouse: { name: "मनीष यदु", role: "पति" } },
+    { name: "अभिषेक यदु", role: "सुपुत्र", spouse: { name: "सोनल यदु", role: "धर्मपत्नी" } },
+    { name: "अनुराग यदु", role: "सुपुत्र", spouse: { name: "खुशबू यदु", role: "धर्मपत्नी" } } ] }
+] },
     { title: "मामा परिवार", items: [] },
     { title: "स्वर्ग से आशीर्वाद", heaven: true, items: [] },
     { title: "दादा-दादी एवं माता-पिता", items: [
@@ -89,15 +103,38 @@ function sarohPanel() {
     h("div", "actions", "", [maps, cal, share, wa]), st, h("div", "actions", "", [btn("बंद करें", "btn", () => go("menu"))])]);
 }
 
+function nameEl(p) {
+  if (!p.media) return h("span", "", p.name);
+  const video = p.media.type === "video";
+  const b = h("button", "name-link", (video ? "🎥 " : "📷 ") + p.name);
+  b.type = "button";
+  b.setAttribute("aria-haspopup", "dialog");
+  b.setAttribute("aria-label", p.name + (video ? " — वीडियो संदेश देखें" : " — तस्वीर देखें"));
+  b.addEventListener("click", () => openMedia(p));
+  return b;
+}
+function nodeEl(p) { return h("span", "node", "", [nameEl(p), h("small", "", p.role)]); }
 function treeList(items) {
   const ul = h("ul", "tree");
   items.forEach((n) => {
-    const li = h("li", "", "", [h("span", "node", "", [h("span", "", n.name), n.role ? h("small", "", n.role) : h("span")])]);
-    if (n.spouse) li.appendChild(h("div", "", "", [h("span", "node", "", [h("span", "", n.spouse.name), h("small", "", n.spouse.role + " (धर्मपत्नी)")])]));
+    const li = h("li", "", "", [nodeEl(n)]);
+    if (n.spouse) li.appendChild(h("div", "spouse", "", [nodeEl(n.spouse)]));
     if (n.children && n.children.length) li.appendChild(treeList(n.children));
     ul.appendChild(li);
   });
   return ul;
+}
+function openMedia(p) {
+  const d = $("#mediaBox"), box = $("#mediaBody");
+  box.textContent = "";
+  $("#mediaName").textContent = p.name;
+  const m = h(p.media.type === "video" ? "video" : "img");
+  if (p.media.type === "video") { m.controls = true; m.playsInline = true; m.preload = "metadata"; }
+  else m.alt = p.name + " की तस्वीर";
+  m.onerror = () => { box.textContent = "यह फ़ाइल अभी उपलब्ध नहीं है।"; };
+  m.src = p.media.src;
+  box.appendChild(m);
+  d.showModal();
 }
 function familyPanel() {
   const wrap = [h("h2", "", "👨‍👩‍👧‍👦 हमारा परिवार")], accs = [];
@@ -184,6 +221,12 @@ function init() {
       else { au.pause(); sb.textContent = "🔔 शुभ ध्वनि चलाएँ"; sb.setAttribute("aria-pressed", "false"); }
     });
   }
+  
+const mb = $("#mediaBox");
+$("#mediaClose").addEventListener("click", () => mb.close());
+mb.addEventListener("click", (e) => { if (e.target === mb) mb.close(); });
+mb.addEventListener("close", () => { $("#mediaBody").textContent = ""; }); // वीडियो रुक जाएगा
+  
   counter();
 }
 init();
