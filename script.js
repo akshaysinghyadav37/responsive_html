@@ -24,7 +24,35 @@ const DATA = {
   samaroh: { menu: "🌺 सामूहिक आशीर्वाद समारोह", date: "5 दिसंबर", place: "बाफना मंगलम, दुर्ग", time: "सायं 7:00 बजे से" },
   /* परिवार: जानकारी मिलने पर items में {name, role} जोड़ें; शाखाओं के लिए children भी दे सकते हैं */
   family: [
-    { title: "बड़े पापा एवं चाचा", items: [] },
+    { title: "बड़े पापा एवं चाचा", items: [
+  { name: "श्री सनक कुमार यदु", role: "बड़े पापा", spouse: { name: "श्रीमती कमलेश्वरी यदु", role: "बड़ी मम्मी" }, children: [
+    { name: "संदीप यादव", role: "भैया", spouse: { name: "शिवरानी यादव", role: "भाभी" }, children: [
+      { name: "आर्यन यादव", role: "भतीजा", media: { type: "video", src: "media/aryan_yadav.mp4" } },
+      { name: "अर्चित यादव", role: "भतीजा" } ] },
+    { name: "ज्योति यादव", role: "दीदी" },
+    { name: "स्मिता यादव", role: "दीदी", spouse: { name: "भुवनेश्वर यादव", role: "जीजाजी" }, children: [
+      { name: "आरु यादव", role: "भांजा" } ] },
+    { name: "अजय यादव", role: "भैया", spouse: { name: "खुशबू यादव", role: "भाभी" }, children: [
+      { name: "अनिकेत यादव", role: "भतीजा" },
+      { name: "गुड़िया यादव", role: "भतीजी" } ] },
+    { name: "अखिलेश यदु", role: "भैया", spouse: { name: "श्रद्धा यदु", role: "भाभी" }, children: [
+      { name: "सिया यदु", role: "भतीजी" },
+      { name: "अरिकेत यदु", role: "भतीजा" } ] },
+    { name: "आकाश यादव", role: "भैया", spouse: { name: "काश्मिता यादव", role: "भाभी" }, children: [
+      { name: "ध्रुव यादव", role: "भतीजा" } ] } ] },
+  { name: "स्वर्गीय श्री बंधु यादव", role: "बड़े पापा", spouse: { name: "स्वर्गीय श्रीमती माया यादव", role: "बड़ी मम्मी" }, children: [
+    { name: "मीना यादव", role: "दीदी" },
+    { name: "प्रभा यादव", role: "दीदी" },
+    { name: "मनहरण यादव", role: "भैया" },
+    { name: "रानी यादव", role: "दीदी" },
+    { name: "छोटी यादव", role: "दीदी" } ] },
+  { name: "श्री दीपक यादव", role: "चाचाजी", spouse: { name: "श्रीमती जया यादव", role: "चाचीजी" }, children: [
+    { name: "अंशुमान यादव", role: "भाई", media: { type: "video", src: "media/anshuman_yadav.mp4" } },
+    { name: "अक्षत यादव", role: "भाई" } ] },
+  { name: "श्री बृजभूषण यादव", role: "चाचाजी", spouse: { name: "श्रीमती साक्षी यादव", role: "चाचीजी" }, children: [
+    { name: "अनन्या यादव", role: "बहन", media: { type: "video", src: "media/ananya_yadav.mp4" } } ] },
+  { name: "दिव्या यादव", role: "बुआजी" }
+] },
     { title: "बुआ परिवार", items: [
   { name: "श्रीमती सावित्री यादव", role: "बुआजी", spouse: { name: "श्री नरेंद्र यादव", role: "फूफाजी" }, children: [
     { name: "देवचंद यादव", role: "सुपुत्र", spouse: { name: "वीणा यादव", role: "धर्मपत्नी" }, children: [
